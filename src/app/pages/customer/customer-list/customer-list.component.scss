@@ -1,0 +1,29 @@
+.customer-container {
+    padding: 20px;
+  }
+  
+  .search-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .keyword-input {
+    width: 250px;
+  }
+  
+  .table-container {
+    margin-top: 10px;
+  }
+  
+  .mat-column-actions button {
+    margin-right: 6px;
+  }
+  
+  .no-data {
+    margin-top: 20px;
+    font-style: italic;
+    color: #888;
+  }
+  

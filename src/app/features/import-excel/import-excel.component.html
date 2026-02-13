@@ -1,0 +1,30 @@
+<div class="card">
+  <h2>Import Sổ GCS</h2>
+
+  <input type="file" class="file-input" (change)="onFileSelected($event)" />
+
+  <button (click)="uploadExcel()" [disabled]="loading">Import</button>
+
+  <div *ngIf="loading" class="progress-wrap">
+    <div class="progress-bar" [style.width.%]="progress"></div>
+  </div>
+
+  <p class="msg">{{ message }}</p>
+
+  <h3 *ngIf="previewData.length > 0">Preview (5 dòng đầu)</h3>
+
+  <table *ngIf="previewData.length > 0">
+    <thead>
+      <tr>
+        <th *ngFor="let col of previewColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of previewData">
+        <td *ngFor="let col of previewColumns">
+          {{ row[col] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

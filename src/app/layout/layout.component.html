@@ -1,0 +1,105 @@
+<mat-sidenav-container class="main-container">
+
+  <!-- SIDENAV -->
+  <mat-sidenav
+    #sidenav
+    [mode]="isMobile ? 'over' : 'side'"
+    opened
+    class="menu-sidenav">
+
+<!-- 🔥 USER INFO BLOCK (chèn ngay tại đây) -->
+<div class="user-info-block" [matMenuTriggerFor]="userMenu">
+
+  <div class="user-left">
+    <img src="assets/osmcs/avatar_default.png" class="user-avatar">
+
+    <div class="user-info-text">
+      <div class="fullname">{{ fullname }}</div>
+      <div class="username">{{ username }}</div>
+    </div>
+  </div>
+
+  <mat-icon class="user-arrow">expand_more</mat-icon>
+</div>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>password</mat-icon>
+    <span>Đổi mật khẩu</span>
+  </button>
+
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Đăng xuất</span>
+  </button>
+</mat-menu>
+
+    <mat-nav-list>
+
+      <ng-container *ngFor="let item of menu">
+
+        <!-- MENU CẤP 1 -->
+        <div class="menu-level-1" (click)="toggleMenu(item)">
+
+          <div class="menu-left">
+            <mat-icon class="menu-icon">{{ item.icon }}</mat-icon>
+            <span class="menu-title">{{ item.title }}</span>
+          </div>
+
+          <mat-icon class="arrow-icon" [class.open]="item.open">
+            expand_more
+          </mat-icon>
+        </div>
+
+        <!-- MENU CẤP 2 -->
+        <div class="submenu" *ngIf="item.children?.length && item.open">
+           <!--[routerLink]="c.route"-->
+          <div
+            class="submenu-item"
+            *ngFor="let c of item.children"
+            [routerLink]="fixRoute(c.route)"   
+            routerLinkActive="active"
+            (click)="closeIfMobile()">
+            {{ c.title }}
+          </div>
+
+        </div>
+
+      </ng-container>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+
+  <!-- CONTENT -->
+  <mat-sidenav-content>
+
+    <!-- HEADER OSMCS -->
+    <mat-toolbar class="toolbar">
+
+      <div class="toolbar-left">
+        <button mat-icon-button (click)="sidenav.toggle()" class="menu-btn">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="title-main">OSMCS</span>
+        <span class="title-sub">Hỗ trợ Vận hành Kiểm soát Chỉ số</span>
+      </div>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button class="logout-btn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Test Bàn Phím Số (Android + iOS Kiểu Điện Thoại)</h2>
+
+  <label for="numberInput">Nhập số:</label>
+  <input
+    id="numberInput"
+    type="tel"
+    inputmode="tel"
+    pattern="[0-9]*"
+    maxlength="12"
+    class="numeric-input"
+    placeholder="Chỉ nhập số 0 → 9"
+    (input)="onInput($event)"
+  />
+
+  <p class="value-display">
+    Giá trị đang nhập: <strong>{{ value }}</strong>
+  </p>
+</div>

@@ -1,0 +1,254 @@
+.lu-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lu-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  padding: 12px 16px;
+}
+
+.lu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lu-title-main {
+  font-size: 18px;
+  font-weight: 600;
+  color: #003a8c;
+}
+
+.lu-title-sub {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.lu-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.lu-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.lu-left,
+.lu-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lu-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #003a8c;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-group select,
+.form-group input {
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+
+.btn-evn {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #0050b3;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-evn:hover {
+  background: #096dd9;
+}
+
+.lu-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 6px;
+}
+
+.lu-note {
+  font-size: 12px;
+  color: #888;
+}
+
+.lu-table-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lu-table-wrapper {
+  max-height: 320px;
+  overflow: auto;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.lu-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.lu-table thead {
+  background: #f5f8ff;
+}
+
+.lu-table th,
+.lu-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lu-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: #555;
+}
+
+.col-check {
+  width: 50px;
+  text-align: center;
+}
+
+.col-so {
+  width: 180px;
+}
+
+.col-ma {
+  width: 80px;
+}
+
+.col-loc {
+  min-width: 10px;
+}
+
+.lu-empty {
+  text-align: center;
+  font-style: italic;
+  color: #999;
+}
+
+.lu-badge-warning {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: #fff7e6;
+  color: #d46b08;
+  font-size: 11px;
+}
+
+.lu-log-card {
+  max-height: 160px;
+}
+
+.lu-log-wrapper {
+  max-height: 120px;
+  overflow: auto;
+  font-size: 11px;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .lu-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  outline: none;
+}
+.input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgba(0,123,255,0.5);
+}
+.numeric-input {
+   height: 52px !important;
+  font-size: 25px;
+  letter-spacing: 1px;
+  text-align: left;
+}
+.numeric-input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+//****************//
+.form-inline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 80px;
+  gap: 12px;
+  align-items: center;
+}
+
+.form-inline label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-inline input {
+  height: 44px;
+  font-size: 26px;
+  line-height: 32px;
+}
+//***************//
+/* Cho nút CHỌN xuống dưới ô nhập */
+/* Ép font lớn cho input nhập số */
+.form-inline input,
+.numeric-input {
+  font-size: 26px !important;
+  line-height: 32px !important;
+  font-weight: 500 !important;
+  color: #000 !important;
+}
+
+.btn-evn {
+  height: 30px !important;
+  padding: 0 14px !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+}
+
+/* Làm nút CHỌN dài hơn */
+.btn-evn.chon-btn {
+  height: 44px !important;          /* cùng chiều cao với input */
+  line-height: 44px !important;     /* đảm bảo text đứng giữa */
+  padding: 0 25px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,34 @@
+<div class="map-wrapper">
+
+    <!-- Tiêu đề -->
+    <h2>Tìm đường đến khách hàng {{ customerId }}</h2>
+  
+    <!-- Thông báo lỗi -->
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Loading -->
+    <div *ngIf="loadingRoute" class="loading">
+      Đang tính toán đường đi...
+    </div>
+  
+    <!-- Bản đồ -->
+    <div id="customerMap"></div>
+  
+    <!-- Panel chỉ đường -->
+    <div class="directions-panel" *ngIf="steps.length > 0">
+      <h3>Chỉ đường</h3>
+  
+      <p><strong>Khoảng cách:</strong> {{ distanceText }}</p>
+      <p><strong>Thời gian dự kiến:</strong> {{ durationText }}</p>
+  
+      <ol>
+        <li *ngFor="let s of steps">
+          {{ s }}
+        </li>
+      </ol>
+    </div>
+  
+  </div>
+  

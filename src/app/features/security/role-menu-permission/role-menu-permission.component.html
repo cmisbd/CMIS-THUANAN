@@ -1,0 +1,36 @@
+<h2>PHÂN QUYỀN CHỨC NĂNG - NHÓM QUYỀN</h2>
+
+<mat-form-field appearance="outline" style="width: 300px;">
+  <mat-label>Chọn nhóm quyền</mat-label>
+  <mat-select [(ngModel)]="selectedRoleId" (selectionChange)="onRoleChange()">
+    <mat-option *ngFor="let r of roles" [value]="r.roleid">
+      {{ r.rolename }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div style="margin-top: 20px;">
+  <ng-container *ngFor="let m of menuTree">
+    <div>
+      <mat-checkbox
+        [checked]="isChecked(m.id)"
+        (change)="toggle(m, $event)">
+        {{ m.title }}
+      </mat-checkbox>
+    </div>
+
+    <div *ngIf="m.children && m.children.length" style="margin-left: 30px;">
+      <div *ngFor="let c of m.children">
+        <mat-checkbox
+          [checked]="isChecked(c.id)"
+          (change)="toggle(c, $event)">
+          {{ c.title }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div style="margin-top: 20px;">
+  <button mat-raised-button color="primary" (click)="save()">Lưu phân quyền</button>
+</div>

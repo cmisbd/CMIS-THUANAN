@@ -1,0 +1,90 @@
+<div class="customer-container">
+
+  <h2>Danh mục khách hàng</h2>
+
+  <!-- Form tìm kiếm -->
+  <div class="search-section">
+    <mat-form-field appearance="outline" class="keyword-input">
+      <mat-label>Từ khóa</mat-label>
+      <input matInput placeholder="Nhập từ khóa..." [(ngModel)]="keyword">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onSearch()">
+      Tìm kiếm
+    </button>
+  </div>
+
+  <!-- Bảng danh sách khách hàng -->
+  <div class="table-container" *ngIf="customers.length > 0">
+    <table mat-table [dataSource]="customers" class="mat-elevation-z2">
+
+      <!-- Cột chọn radio -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-radio-button
+            [value]="row"
+            name="selectedCustomer"
+            (change)="onSelectCustomer(row)">
+          </mat-radio-button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Tác vụ </th>
+        <td mat-cell *matCellDef="let row">
+
+          <!-- Nút xem bản đồ CMIS -->
+          <button mat-icon-button
+                  color="primary"
+                  matTooltip="Xem lộ trình (CMIS Map)"
+                  (click)="onShowRoute(row)">
+            <mat-icon>map</mat-icon>
+          </button>
+
+          <!-- Nút mở Google Maps -->
+          <button mat-icon-button
+                  color="accent"
+                  matTooltip="Chỉ đường thực tế (Google Maps)"
+                  (click)="openGoogleMaps(row)">
+            <mat-icon>navigation</mat-icon>
+          </button>
+
+        </td>
+      </ng-container>      
+      <!-- Mã KH -->
+      <ng-container matColumnDef="customeid">
+        <th mat-header-cell *matHeaderCellDef> Mã KH </th>
+        <td mat-cell *matCellDef="let row"> {{ row.customeid }} </td>
+      </ng-container>
+
+      <!-- Ghi chú -->
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef> Ghi chú </th>
+        <td mat-cell *matCellDef="let row"> {{ row.note }} </td>
+      </ng-container>
+      <!-- Actions -->
+      <!-- Lat -->
+      <ng-container matColumnDef="lat">
+        <th mat-header-cell *matHeaderCellDef> Lat </th>
+        <td mat-cell *matCellDef="let row"> {{ row.lat }} </td>
+      </ng-container>
+
+      <!-- Lng -->
+      <ng-container matColumnDef="lng">
+        <th mat-header-cell *matHeaderCellDef> Lng </th>
+        <td mat-cell *matCellDef="let row"> {{ row.lng }} </td>
+      </ng-container>
+      <!-- Render header & row -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+  </div>
+
+  <!-- Khi không có dữ liệu -->
+  <div class="no-data" *ngIf="customers.length === 0">
+    Không tìm thấy khách hàng.
+  </div>
+
+</div>

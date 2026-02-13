@@ -1,0 +1,25 @@
+<h2>PHÂN QUYỀN NGƯỜI DÙNG - NHÓM QUYỀN</h2>
+
+<!-- SELECT USER -->
+<mat-form-field appearance="outline" style="width: 300px;">
+  <mat-label>Chọn người dùng</mat-label>
+  <mat-select [(ngModel)]="selectedUserId" (selectionChange)="onUserChange()">
+    <mat-option *ngFor="let u of users" [value]="u.id_user">
+      {{ u.user_name  }} - {{ u.fullname  }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div style="margin-top: 20px;">
+  <div *ngFor="let r of roles">
+    <mat-checkbox
+      [checked]="isChecked(r.roleid)"
+      (change)="toggle(r.roleid, $event)">
+      {{ r.rolename }}
+    </mat-checkbox>
+  </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <button mat-raised-button color="primary" (click)="save()">Lưu</button>
+</div>

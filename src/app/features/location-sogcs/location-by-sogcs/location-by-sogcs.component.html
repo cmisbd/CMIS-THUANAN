@@ -1,0 +1,101 @@
+<h2 class="page-title">Lấy tọa độ theo Sổ GCS</h2>
+
+<!-- TOOLBAR: Sổ GCS + Nút -->
+<div class="toolbar">
+<button mat-raised-button color="primary" class="toolbar-item"
+        (click)="preloadOfflineData()">
+  Tải Offline
+</button>
+
+<button mat-raised-button color="warn" class="toolbar-item"
+        (click)="manualSync()">
+  Đồng bộ
+</button>
+  <!-- CUSTOM SEARCH DROPDOWN: Chọn Sổ -->
+  <mat-form-field appearance="outline" class="so-select toolbar-item">
+    <mat-label>Chọn Sổ GCS</mat-label>
+
+    <mat-select [(ngModel)]="selectedSo"
+                (openedChange)="onSoDropdownOpen()"
+                (selectionChange)="loadCustomersBySo()">
+
+      <!-- SEARCH BOX (cho phép nhập) -->
+      <mat-option>
+        <input
+          #soSearchInput
+          matInput
+          placeholder="Tìm Sổ..."
+          [(ngModel)]="searchSo"
+          (keyup)="filterSo()"
+          class="search-so-input"
+        />
+      </mat-option>
+
+      <!-- DANH SÁCH SỔ FILTER -->
+      <mat-option *ngFor="let so of filteredSo" [value]="so.bookCode">
+        {{ so.bookCode }}
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+  <!-- NÚT HÀNH ĐỘNG -->
+  <button mat-raised-button color="primary" class="toolbar-item"
+          (click)="getLocation()">
+    Lấy tọa độ
+  </button>
+
+  <button mat-raised-button color="accent" class="toolbar-item"
+          (click)="saveAll()">
+    Lưu tất cả
+  </button>
+</div>
+
+  <!-- SEARCH CUSTOMER (NGAY TRÊN BẢNG) -->
+   <!--
+  <div class="customer-search-wrapper">
+    <mat-form-field appearance="outline" class="customer-search-box">
+      <mat-label>Tìm khách hàng</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchText"
+        placeholder="Nhập mã hoặc tên KH..."
+      />
+      <button matSuffix mat-icon-button *ngIf="searchText" (click)="searchText = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+-->
+
+  <!-- SEARCH CUSTOMER -->
+<div class="customer-search" *ngIf="customers.length">
+  <input
+    type="text"
+    placeholder="Tìm khách hàng..."
+    [(ngModel)]="filterCustomerText"
+    (input)="filterCustomers()"
+  />
+</div>
+
+  <!-- TABLE KHÁCH HÀNG -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Chọn</th>
+          <th class="col-makh">Mã KH</th>
+          <th>Tên KH</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of customers | filterCustomer: filterCustomerText">
+          <td><mat-checkbox [(ngModel)]="c.checked"></mat-checkbox></td>
+          <td class="col-makh">{{ c.customerCode }}</td>
+          <td>{{ c.customerName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

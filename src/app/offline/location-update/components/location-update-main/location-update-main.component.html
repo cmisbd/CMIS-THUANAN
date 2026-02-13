@@ -1,0 +1,145 @@
+<div class="lu-container">
+<!--   <div class="lu-card lu-card-header">
+    <div class="lu-card-title">
+      <div class="lu-title-main">Cập nhật vị trí khách hàng</div>
+     <div class="lu-title-sub">Bước 1 – Chọn trạm, chọn công tơ cần cập nhật tọa độ</div>
+    </div>
+    <div class="lu-actions">
+      <button class="btn-evn" (click)="goToSelected()">
+        Danh sách công tơ đã chọn
+      </button>
+    </div>
+  </div> -->
+
+  <div class="lu-layout">
+    <!-- Cột trái: Chọn trạm + tìm kiếm -->
+    <div class="lu-left">
+      <div class="lu-card">
+        <!-- <div class="lu-section-title">1. Chọn trạm</div> -->
+        <div class="form-group">
+              <div class="lu-actions">
+                <button class="btn-evn" (click)="goToSelected()">
+                  Chuyển sang bước lấy tọa độ
+                </button>
+              </div>
+        <!--   <label>Mã trạm</label> -->
+        <mat-form-field appearance="outline" class="tram-select">
+          <mat-label>Chọn trạm</mat-label>
+        
+          <mat-select [(ngModel)]="selectedTram" (openedChange)="onTramDropdownOpen()" (selectionChange)="onTramChange()">
+        
+            <!-- SEARCH BOX -->
+<!--             <mat-option>
+              <input #tramSearchInput matInput placeholder="Tìm trạm..." [(ngModel)]="searchTram" (keyup)="filterTram()"
+                class="search-tram-input" />
+            </mat-option> -->
+<mat-option disabled>
+  <input
+    #tramSearchInput
+    matInput
+    placeholder="Tìm trạm..."
+    [(ngModel)]="searchTram"
+    (keyup)="filterTram()"
+    (keydown.space)="$event.stopPropagation()"
+    class="search-tram-input"
+  />
+</mat-option>
+
+        
+            <!-- DANH SÁCH TRẠM SAU FILTER -->
+            <mat-option *ngFor="let t of filteredTrams" [value]="t.MA_TRAM">
+              {{ t.MA_TRAM }} - {{ t.TEN_TRAM }}
+            </mat-option>
+        
+          </mat-select>
+        </mat-form-field>
+
+        </div>
+        <div *ngIf="loadingTram" class="lu-note">Đang tải danh sách trạm...</div>
+      </div>
+
+      <div class="lu-card">
+        <div class="form-inline">
+          <input
+            id="soCongToInput"
+            name="meter-input"
+            type="tel"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          
+            maxlength="12"
+            class="input numeric-input"
+            placeholder="Nhập số công tơ..."
+            [(ngModel)]="searchSoCongTo"
+            (input)="onSoCongToInput($event)"
+          />
+<div class="lu-actions">
+  <button class="btn-evn chon-btn" (click)="onSearchSoCongTo()">
+    Chọn
+  </button>
+</div>
+     </div>
+      </div>
+    </div>
+
+    <!-- Cột phải: danh sách khách hàng theo trạm -->
+    <div class="lu-right">
+      <div class="lu-card lu-table-card">
+<!--         <div class="lu-section-title">
+          3. Danh sách khách hàng trạm {{ selectedTram || '...' }}
+        </div> -->
+
+        <div *ngIf="loadingCustomers" class="lu-note">
+          Đang tải khách hàng...
+        </div>
+
+        <div class="lu-table-wrapper" *ngIf="!loadingCustomers">
+          <table class="lu-table">
+            <thead>
+              <tr>
+                <th class="col-check">Chọn</th>
+                <th class="col-so">Số Cto</th>
+                <th class="col-ma">Mã KH</th>
+                <th class="col-loc">Tọa độ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of customers">
+                <td class="col-check">
+                  <input
+                    type="checkbox"
+                    [checked]="c._selected"
+                    (change)="onToggleSelect(c, $event)">
+                </td>
+                <td class="col-so">{{ c.SO_CONGTO }}</td>
+                <td class="col-ma">{{ c.MA_KHANG }}</td>
+                <td class="col-loc">
+                  <span *ngIf="c.LAT && c.LNG">
+                    {{ c.LAT | number:'1.6-6' }}, {{ c.LNG | number:'1.6-6' }}
+                  </span>
+                  <span *ngIf="!c.LAT || !c.LNG" class="lu-badge-warning">
+                    Chưa có tọa độ
+                  </span>
+                </td>
+              </tr>
+              <tr *ngIf="!customers || customers.length === 0">
+                <td colspan="4" class="lu-empty">Chưa có dữ liệu khách hàng.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="lu-card lu-log-card">
+        <div class="lu-section-title">Nhật ký thao tác</div>
+        <div class="lu-log-wrapper">
+          <div *ngFor="let m of logMessages">{{ m }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

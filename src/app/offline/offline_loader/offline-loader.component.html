@@ -1,0 +1,45 @@
+<div class="ol-container">
+
+  <!-- Header -->
+  <div class="ol-card ol-header">
+    <div class="ol-title">Tải dữ liệu Offline</div>
+    <div class="ol-subtitle">Theo mã trạm nhập tay</div>
+  </div>
+
+  <!-- Nhập mã trạm -->
+<div class="ol-card ol-section">
+  <label class="ol-label">Nhập mã trạm</label>
+
+  <div class="ol-input-block">
+    <input
+      type="text"
+      class="ol-input"
+      placeholder="Nhập mã trạm..."
+      [(ngModel)]="maTramInput"
+    />
+
+    <button
+      class="btn-evn"
+      (click)="loadTramAndCustomersByCode()"
+      [disabled]="loading"
+    >
+      <span *ngIf="!loading">Tải dữ liệu trạm + khách hàng</span>
+      <span *ngIf="loading">Đang tải...</span>
+    </button>
+  </div>
+</div>
+
+
+
+  <!-- Nhật ký thao tác -->
+  <div class="ol-card ol-section">
+    <div class="ol-label">Nhật ký thao tác</div>
+
+    <div class="ol-log">
+      <div *ngFor="let m of logMessages" class="ol-log-item">
+        {{ m }}
+      </div>
+    </div>
+  </div>
+
+</div>

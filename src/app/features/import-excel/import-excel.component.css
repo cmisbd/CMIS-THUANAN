@@ -1,0 +1,47 @@
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px #0001;
+}
+
+.file-input {
+    margin: 10px 0;
+}
+
+.progress-wrap {
+    width: 100%;
+    background: #eee;
+    height: 8px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #007bff;
+    transition: width 0.3s ease;
+    border-radius: 6px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+}
+
+th {
+    text-align: left !important;
+    background: #f4f4f4;
+}
+
+.msg {
+    margin-top: 10px;
+    font-weight: bold;
+}

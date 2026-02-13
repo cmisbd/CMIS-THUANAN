@@ -1,0 +1,308 @@
+/* ===== TIÊU ĐỀ ===== */
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 18px;
+}
+
+/* ===== TOOLBAR ===== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.toolbar-item {
+  flex-shrink: 0;
+}
+
+.so-select {
+  min-width: 240px;
+}
+
+button.toolbar-item {
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ===== SEARCH SỔ TRONG DROPDOWN ===== */
+.search-so-input {
+  padding: 6px 8px !important;
+  font-size: 14px;
+}
+
+/* ===== SEARCH KHÁCH HÀNG TRÊN LƯỚI ===== */
+.customer-search-wrapper {
+  margin: 0 0 2px 0;        /* 👈 sát ngay phía trên bảng */
+  margin-bottom: 2px !important;
+}
+
+.customer-search-box {
+  width: 100%;
+}
+
+.customer-search-wrapper .mat-form-field-wrapper {
+  padding-bottom: 0 !important;  /* giảm khoảng trống Material */
+  margin-bottom: 0 !important;
+}
+
+.customer-search-wrapper .mat-form-field-infix {
+  padding: 6px 10px !important;     /* Form nhỏ gọn lại */
+}
+.customer-search-wrapper .mat-form-field-flex {
+  padding-bottom: 0 !important;
+}
+
+.customer-search-wrapper .mat-form-field-outline {
+  top: 0 !important;
+}
+/* ===== TABLE WRAPPER ===== */
+.table-wrapper {
+  margin-top: 0;           /* 👈 không đẩy xuống nữa */
+  background: #ffffff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead tr {
+  background: #eef2f7;
+}
+
+thead th {
+  padding: 10px 12px;
+  font-weight: 600;
+  text-align: left;
+  color: #37474f;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #f7f9fc;
+}
+
+/* Căn chỉnh cột Mã KH sát với cột Chọn */
+table td:nth-child(2),
+table th:nth-child(2) {
+  text-align: left !important;
+  padding-left: 0px !important;    /* Sát hơn, giảm spacing */
+}
+table td,
+table th {
+  padding: 8px 10px !important;
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 600px) {
+  .toolbar {
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .so-select,
+  .toolbar-item {
+    width: 100%;
+  }
+
+  button.toolbar-item {
+    width: 100%;
+    height: 44px;
+    margin-bottom: 8px;  /* 👈 khoảng cách nhỏ giữa 2 nút */
+  }
+
+  button.toolbar-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .customer-search-box {
+    width: 100%;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  thead th,
+  tbody td {
+    padding: 8px 10px;
+  }
+}
+
+/* RÚT SÁT TÌM KIẾM + BẢNG */
+/* ===== SEARCH KHÁCH HÀNG SÁT BẢNG ===== */
+
+.customer-search-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.customer-search-wrapper .mat-form-field {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.customer-search-wrapper .mat-form-field-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.customer-search-wrapper .mat-form-field-flex {
+  padding: 0 !important;
+}
+
+.customer-search-wrapper .mat-form-field-infix {
+  padding: 6px 10px !important;
+}
+
+.customer-search-wrapper .mat-form-field-subscript-wrapper {
+  display: none !important;   /* 👈 Dòng này RÚT 80% khoảng trắng */
+}
+
+/* Table gần hơn */
+.table-wrapper {
+  margin-top: 4px !important;   /* chỉ cách 4px */
+  padding-top: 6px;
+}
+col-makh,
+td.col-makh {
+  text-align: left !important;
+  padding-left: 4px !important;   /* sát hơn */
+  width: 120px;
+}
+
+.customer-search-wrapper {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.customer-search-wrapper + .table-wrapper {
+  margin-top: 4px !important;
+}
+/* XOÁ KHOẢNG CÁCH OUTLINE-GAP CỦA MATERIAL */
+.customer-search-wrapper .mat-form-field-outline-gap {
+  display: none !important;
+}
+
+/* Giảm chiều cao tổng thể của form-field */
+.customer-search-wrapper .mat-form-field-flex {
+  padding: 0 !important;
+}
+
+/* Giảm bottom spacing */
+.customer-search-wrapper .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Cho form-field gọn hơn */
+.customer-search-box .mat-form-field-infix {
+  padding: 4px 10px !important;
+}
+
+/* ==== 1. RÚT KHOẢNG CÁCH Ô TÌM KIẾM VỚI BẢNG ==== */
+
+/* Bản thân khối search không chừa khoảng dưới */
+.customer-search-wrapper {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* Xoá khoảng trống mặc định dưới mat-form-field */
+.customer-search-wrapper .mat-form-field {
+  width: 100%;
+  margin: 0;
+}
+
+.customer-search-wrapper .mat-form-field-wrapper {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Ẩn phần subscript (khoảng trống cho lỗi/ hint) */
+.customer-search-wrapper .mat-form-field-subscript-wrapper {
+  display: none;
+}
+
+/* Bảng chỉ cách search 4px */
+.table-wrapper {
+  margin-top: 4px;
+}
+
+
+/* ==== 2. CHO CỘT MÃ KH GẦN CỘT CHỌN HƠN ==== */
+
+/* Thu hẹp cột "Chọn" để không chiếm quá nhiều chỗ */
+.table-wrapper table th:first-child,
+.table-wrapper table td:first-child {
+  width: 40px;
+  padding-right: 4px;
+}
+
+/* Cột Mã KH: căn trái và sát hơn */
+.table-wrapper table th.col-makh,
+.table-wrapper table td.col-makh {
+  text-align: left;
+  padding-left: 6px;
+}
+/* RÚT SÁT Ô TÌM KHÁCH HÀNG VỚI BẢNG */
+.table-wrapper {
+  margin-top: 4px !important;  /* chỉ chừa một tí */
+}
+/* Khối chứa search + bảng */
+.customer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;                 /* 👈 khoảng cách giữa ô tìm kiếm và bảng */
+}
+
+/* Không cho 2 thằng này tự thêm margin-top/bottom */
+.customer-search-wrapper,
+.table-wrapper {
+  margin: 0 !important;
+}
+
+/* Thu gọn mat-form-field để không cao quá */
+.customer-search-wrapper .mat-form-field {
+  width: 100%;
+  margin: 0;
+}
+
+/* Cột Mã KH giữ đúng như con đang ưng */
+.table-wrapper table th.col-makh,
+.table-wrapper table td.col-makh {
+  text-align: left;
+  padding-left: 6px;
+}
+
+.customer-search {
+  margin-bottom: 3px;
+
+  input {
+    width: 260px;
+    padding: 6px 10px;
+    border: 0px solid #ccc;
+    border-radius: 6px;
+
+    &:focus {
+      outline: 0px solid #1a73e8;
+    }
+  }
+}

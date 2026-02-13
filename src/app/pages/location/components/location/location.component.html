@@ -1,0 +1,67 @@
+<div class="location-container">
+
+  <!-- FORM NHẬP -->
+  <div class="box">
+    <h2 class="panel-title">Cập nhật vị trí khách hàng</h2>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label class="label">Số công tơ</label>
+        <input id="custIdInput" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="12" class="input numeric-input"
+          placeholder="Nhập số công tơ..." [(ngModel)]="model.CUSTOMEID" (input)="onCustIdInput($event)" />
+      </div>
+
+      <div class="form-group">
+        <label class="label">Ghi chú</label>
+        <input class="input" [(ngModel)]="model.NOTE" />
+      </div>
+
+      <div class="form-group full">
+        <button class="btn-blue" (click)="getLocation()">Lấy tọa độ</button>
+      </div>
+
+      <div class="coord-box" *ngIf="model.LAT">
+        <b>LAT:</b> {{ model.LAT }} &nbsp;&nbsp; 
+        <b>LNG:</b> {{ model.LNG }}
+      </div>
+
+      <div class="btn-row full">
+        <button class="btn-blue" (click)="addToList()">Thêm khách hàng</button>
+        <button class="btn-green" [disabled]="customerList.length === 0" (click)="saveAll()">Lưu tất cả</button>
+      
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BẢNG DANH SÁCH -->
+  <div class="box">
+    <h3 class="panel-title">Danh sách khách hàng đã thêm</h3>
+
+    <table class="cmis-table" *ngIf="customerList.length > 0">
+      <thead>
+        <tr>
+          <th>Mã KH</th>
+          <th>Ghi chú</th>
+          <th>User</th>
+          <th>Xóa</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of customerList; let i = index">
+          <td>{{ item.CUSTOMEID }}</td>          
+          <td>{{ item.NOTE }}</td>
+          <td>{{ item.USER }}</td>
+          <button class="btn-red-small" (click)="remove(i)">X</button>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="empty" *ngIf="customerList.length === 0">
+      Chưa có khách hàng nào được thêm.
+    </div>
+  </div>
+
+</div>

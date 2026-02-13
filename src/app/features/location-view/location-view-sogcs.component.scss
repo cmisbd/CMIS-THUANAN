@@ -1,0 +1,196 @@
+/* ===================== */
+/* CMIS 4.0 FORM LOOK     */
+/* ===================== */
+
+.cmis-box {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  border-left: 4px solid #1e88e5;
+}
+
+.cmis-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0d47a1;
+  margin-bottom: 15px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+/* Input CMIS */
+.cmis-input,
+.cmis-select {
+  padding: 7px 10px;
+  border: 1px solid #cfd8dc;
+  border-radius: 5px;
+  font-size: 14px;
+  min-width: 250px;
+  background: #ffffff;
+  transition: border-color .2s;
+}
+
+.cmis-input:focus,
+.cmis-select:focus {
+  border-color: #1e88e5;
+  outline: none;
+}
+
+/* CMIS button */
+.cmis-btn {
+  background: #1e88e5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cmis-btn:hover {
+  background: #1565c0;
+}
+
+/* Table giữ nguyên nhưng thêm chút mềm mại */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Căn trái các tiêu đề bảng, trừ cột icon */
+.table-custom th {
+  text-align: left !important;
+  padding-left: 12px;
+}
+
+.table-custom td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/* Giữ cột Vị trí căn giữa */
+.table-custom th:first-child,
+.table-custom th:nth-child(2) {
+  text-align: center !important;
+  padding-left: 0;
+}
+
+.map-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.map-content-lg {
+  width: 80vw;
+  height: 80vh;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#map {
+  width: 100%;
+  height: calc(80vh - 60px);
+}
+
+.map-footer {
+  height: 60px;
+  padding: 10px;
+  background: #f4f4f4;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .map-content-lg {
+    width: 95vw;
+    height: 90vh;
+  }
+
+  #map {
+    height: calc(90vh - 60px);
+  }
+}
+
+/* POPUP CHỌN ỨNG DỤNG */
+.app-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.app-box {
+  width: 90%;
+  max-width: 350px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.app-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.app-btn {
+  width: 100%;
+  padding: 10px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.app-btn:hover {
+  background: #125ea1;
+}
+
+.app-btn-close {
+  width: 100%;
+  padding: 10px;
+  background: #bbb;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+

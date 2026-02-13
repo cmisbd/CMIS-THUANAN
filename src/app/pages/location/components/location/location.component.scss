@@ -1,0 +1,155 @@
+.location-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 10px;
+}
+
+/* ===== BOX ===== */
+.box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  border-left: 6px solid #007bff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== TITLE ===== */
+.panel-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #333;
+}
+
+/* ===== FORM GRID ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full {
+  grid-column: 1 / span 2;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  outline: none;
+}
+.input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgba(0,123,255,0.5);
+}
+
+/* ===== BUTTONS ===== */
+.btn-blue, .btn-green, .btn-purple, .btn-gray {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+}
+
+.btn-blue { background: #007bff; }
+.btn-green { background: #28a745; }
+.btn-purple { background: #6f42c1; }
+.btn-gray { background: #6c757d; }
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== TABLE ===== */
+.cmis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  th {
+    background: #eef3ff;
+    padding: 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid #d5d5d5;
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  tr:hover {
+    background: #f8faff;
+  }
+}
+
+.btn-red-small {
+  background: #dc3545;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.empty {
+  padding-top: 12px;
+  font-style: italic;
+  color: #666;
+}
+.numeric-input {
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.numeric-input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+/* ===== COORD BOX ===== */
+.coord-box {
+  background: #f0f8ff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+  margin-top: 4px;
+}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .full {
+    grid-column: 1 / span 1 !important;
+  }
+
+  .btn-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-row button {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+}

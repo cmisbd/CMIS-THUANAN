@@ -1,0 +1,127 @@
+<div class="cmis-box">
+  <div class="cmis-title">Chọn các tiêu chí</div>
+
+  <div class="radio-group">
+    <label>
+      <input type="radio" name="criteria" value="so" [(ngModel)]="searchMode" />
+      Theo Sổ ghi chỉ số (MA_SOGCS)
+    </label>
+
+    <label>
+      <input type="radio" name="criteria" value="kh" [(ngModel)]="searchMode" />
+      Theo Mã khách hàng (MA_KHANG)
+    </label>
+  </div>
+</div>
+
+<!-- Theo Sổ GCS -->
+<div class="cmis-box" *ngIf="searchMode === 'so'">
+  <div class="cmis-title">Sổ ghi chỉ số</div>
+
+  <div class="form-row">
+    <input
+      type="text"
+      class="cmis-input"
+      placeholder="Tìm Sổ GCS..."
+      [(ngModel)]="keywordSo"
+      (input)="filterSo()"
+    />
+
+    <select class="cmis-select" [(ngModel)]="selectedSo">
+      <option *ngFor="let so of filteredSo" [value]="so.ma_sogcs" name="selectedSo">
+        {{ so.ma_sogcs }}
+      </option>
+    </select>
+
+    <button class="cmis-btn" (click)="getListCustomers()">Lấy danh sách</button>
+  </div>
+</div>
+
+<!-- Theo Mã KH -->
+<div class="cmis-box" *ngIf="searchMode === 'kh'">
+  <div class="cmis-title">Nhập mã khách hàng</div>
+
+  <div class="form-row">
+    <input
+      type="text"
+      class="cmis-input"
+      placeholder="Nhập mã KH..."
+      [(ngModel)]="maKhachHang"
+    />
+
+    <button class="cmis-btn" (click)="getListCustomers()">Lấy danh sách</button>
+  </div>
+</div>
+
+<!-- Bảng giữ nguyên -->
+<div class="table-responsive" *ngIf="customers.length > 0">
+  <table class="table-custom">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Vị trí</th>
+        <th>Mã KH</th>
+        <th>Tên khách hàng</th>
+      </tr>
+    </thead>
+
+    <tbody>
+<tr *ngFor="let c of customers">
+  <td><input type="checkbox"></td>
+
+  <td style="text-align: center;">
+    <i class="material-icons" style="cursor: pointer; color: #1976d2;" (click)="openMap(c)">
+      location_on
+    </i>
+
+    <i class="material-icons" style="cursor: pointer; color: #43a047; margin-left: 6px;"
+       (click)="openAppSelect(c)">
+      navigation
+    </i>
+  </td>
+
+  <td>{{ c.ma_khang }}</td>
+  <td>{{ c.ten_khang }}</td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+<!-- Popup Map -->
+<div *ngIf="showMap" class="map-modal">
+  <div class="map-content-lg">
+
+    <div id="map"></div>
+
+    <div class="map-footer">
+      <button class="cmis-btn" (click)="closeMap()">Đóng</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Popup Chọn Ứng Dụng -->
+<!-- DANH SÁCH KHÁCH HÀNG (ví dụ icon chỉ đường) -->
+<!-- <i class="material-icons"
+   style="cursor: pointer; color: orange; margin-left: 5px;"
+   (click)="openAppSelect(c)">
+  near_me
+</i> -->
+
+<!-- POPUP CHỌN ỨNG DỤNG -->
+<div class="app-modal" *ngIf="showAppSelect">
+  <div class="app-box">
+
+    <div class="app-title">Chọn ứng dụng chỉ đường</div>
+
+    <button class="app-btn" (click)="openGoogleMaps()">Google Maps</button>
+    <button class="app-btn" (click)="openGrab()">Grab</button>
+    <button class="app-btn" (click)="openBe()">Be</button>
+    <button class="app-btn" (click)="openWaze()">Waze</button>
+    <button class="app-btn" *ngIf="isIOS" (click)="openAppleMaps()">Apple Maps</button>
+
+    <button class="app-btn-close" (click)="closeAppSelect()">Đóng</button>
+
+  </div>
+</div>
+

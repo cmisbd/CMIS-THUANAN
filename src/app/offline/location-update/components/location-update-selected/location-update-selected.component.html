@@ -1,0 +1,64 @@
+<div class="lu-container">
+  <div class="lu-card lu-card-header">
+    <div class="lu-card-title">
+     <!--  <div class="lu-title-main">Cập nhật vị trí khách hàng</div> -->
+      <!-- <div class="lu-title-sub">Bước 2 – Ghi nhận tọa độ và lưu offline / đồng bộ server</div> -->
+    </div>
+    <div class="lu-actions">
+      <button class="btn-gray" (click)="onBack()">Quay lại</button>
+      <button class="btn-evn" (click)="onGetLocation()">Lấy tọa độ</button>
+      <button class="btn-evn" (click)="onSaveOffline()" [disabled]="savingOffline">
+        Lưu
+      </button>
+      <button class="btn-evn" (click)="onSyncServer()" [disabled]="syncing">
+        Đồng bộ
+      </button>
+    </div>
+  </div>
+
+  <div class="lu-card lu-table-card">
+    <div class="lu-section-title">Danh sách công tơ đã chọn</div>
+    <div class="lu-table-wrapper">
+      <table class="lu-table">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Số công tơ</th>
+            <th>Mã khách hàng</th>
+            <th>Cluster</th>
+            <th>Toạ độ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of selectedList; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ c.SO_CONGTO }}</td>
+            <td>{{ c.MA_KHANG }}</td>
+            <td>
+              <span *ngIf="c.tempCluster">temp: {{ c.tempCluster }}</span>
+              <span *ngIf="!c.tempCluster" class="lu-badge-warning">Chưa có</span>
+            </td>
+            <td>
+              <span *ngIf="c.LAT && c.LNG">
+                {{ c.LAT | number:'1.6-6' }}, {{ c.LNG | number:'1.6-6' }}
+              </span>
+              <span *ngIf="!c.LAT || !c.LNG" class="lu-badge-warning">Chưa có tọa độ</span>
+            </td>
+          </tr>
+          <tr *ngIf="!selectedList || selectedList.length === 0">
+            <td colspan="5" class="lu-empty">
+              Chưa có công tơ nào được chọn. Vui lòng quay lại bước 1 để chọn.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="lu-card lu-log-card">
+    <div class="lu-section-title">Nhật ký thao tác</div>
+    <div class="lu-log-wrapper">
+      <div *ngFor="let m of logMessages">{{ m }}</div>
+    </div>
+  </div>
+</div>

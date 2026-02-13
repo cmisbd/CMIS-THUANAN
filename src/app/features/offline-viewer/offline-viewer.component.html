@@ -1,0 +1,43 @@
+
+<div class="offline-container">
+
+  <!-- CHỌN BẢNG -->
+  <div class="panel box">
+    <h3 class="panel-title">Chọn dữ liệu offline</h3>
+
+    <div class="radio-group">
+      <label><input type="radio" name="tbl" value="DM_SOGCS" (change)="setTable('DM_SOGCS')" checked> DM_SOGCS</label>
+      <label><input type="radio" name="tbl" value="CUSLOCATION" (change)="setTable('CUSLOCATION')"> CUSLOCATION</label>
+      <label><input type="radio" name="tbl" value="GCS_CHISO" (change)="setTable('GCS_CHISO')"> GCS_CHISO</label>
+      <label><input type="radio" name="tbl" value="HDG_VITRI_DDO" (change)="setTable('HDG_VITRI_DDO')"> Vị trí đo</label>
+      <label><input type="radio" name="tbl" value="D_TRAM" (change)="setTable('D_TRAM')"> Danh mục trạm</label>
+    </div>
+
+    <button class="btn-blue" (click)="syncAll()">🔄 Đồng bộ tất cả</button>
+  </div>
+
+  <!-- KẾT QUẢ DỮ LIỆU -->
+  <div class="panel box" *ngIf="selectedTable">
+    <h3 class="panel-title">{{ selectedTable }} ({{ data.length }} bản ghi)</h3>
+
+    <button class="btn-red" (click)="clearCurrent()">🗑 Xóa bảng này</button>
+
+    <table class="cmis-table" *ngIf="data.length > 0">
+      <thead>
+        <tr>
+          <th *ngFor="let col of columns">{{ col }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td *ngFor="let col of columns">{{ row[col] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="empty" *ngIf="data.length === 0">
+      Không có dữ liệu offline.
+    </div>
+  </div>
+
+</div>
